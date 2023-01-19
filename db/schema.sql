@@ -9,11 +9,11 @@ CREATE TABLE department (
     PRIMARY KEY (id) --PRIMARY KEY
 );
 
-CREATE TABLE role (
+CREATE TABLE roles (
     id INT AUTO_INCREMENT, --AUTO INCREMENT WILL ++ THE ID'S FOR US
     title VARCHAR(30) NOT NULL, --TITLE IS MAX OF 30 CHARACTERS
     salary DEC NOT NULL,
-    department_id INT,
+    department_id INT AUTO_INCREMENT,
     FOREIGN KEY (department_id) --FOREIGN KEY IS DEP_ID ATTACHING TO THE ID FROM DEPARTMENT.
     REFERENCES department(id)
     ON DELETE SET NULL
@@ -26,7 +26,7 @@ CREATE TABLE employee (
     role_id INT,
     manager_id INT NOT NULL,
     FOREIGN KEY (role_id) -- FOREIGN KEY ROLE_ID IS ATTACHED TO ROLE TABLE'S ID.
-    REFERENCES role(id)
+    REFERENCES roles(id)
     FOREIGN KEY (manager_id) -- FOREIGN KEY MANAGER_ID IS ATTACHED TO EMPLOYEE ID.
     REFERENCES employee(id)
 );
