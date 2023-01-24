@@ -1,15 +1,17 @@
 {
-  "name": "package.json",
+  "name": "personnel-management-system",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fabien1313/personnel-management-system.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -18,6 +20,7 @@
   "homepage": "https://github.com/fabien1313/personnel-management-system#readme",
   "dependencies": {
     "console.table": "^0.10.0",
+    "dotenv": "^16.0.3",
     "inquirer": "^8.2.4",
     "mysql2": "^3.0.1"
   }
