@@ -23,29 +23,49 @@ db_connection.connect(err => {
 });
 
 
-const questions = [
-    {
-        type: 'list',
-        name: 'navmenu',
-        message: 'What would you like to do?',
-        choices: [
-         'View all departments',
-         'View all roles', 
-         'View all employees', 
-         'Add a department', 
-         'Add a role', 
-         'Add an employee', 
-         'update an employee role', 
-         'Update an employee manager',
-         'View employees by department',
-         'Delete a department',
-         'Delete a role',
-         'Delete an employee',
-         'View department budgets',
-         'Terminate program'
-        ]
-    }
-];
+const startPrompt = () => {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'navmenu',
+            message: 'What would you like to do?',
+            choices: [
+             'View all departments',
+             'View all roles', 
+             'View all employees', 
+             'Add a department', 
+             'Add a role', 
+             'Add an employee', 
+             'update an employee role', 
+             'Update an employee manager',
+             'View employees by department',
+             'Delete a department',
+             'Delete a role',
+             'Delete an employee',
+             'View department budgets',
+             'Terminate program'
+            ]
+        }
+    ]).then(answer => {
+        switch (answer.navmenu) {
+            case 'View all departments':
+                viewDepartments();
+                break;
+            case 'View all roles':
+                viewRoles();
+                break;
+            case 'View all employees':
+                viewEmployees();
+                break;
+            case 'Add a department':
+                addDepartment();
+                break;
+            case ''
+        }
+
+    });
+
+};
 
 
 
