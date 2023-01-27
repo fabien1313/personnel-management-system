@@ -18,7 +18,7 @@ database: process.env.DATABASE
 db_connection.connect(err => {
     if (err) throw err;
     console.log('You have successfully connected to the employee database!');
-    inquirer.prompt(questions)
+    startPrompt();
 
 });
 
@@ -60,11 +60,38 @@ const startPrompt = () => {
             case 'Add a department':
                 addDepartment();
                 break;
-            case ''
+            case 'Add a role':
+                addRole();
+                break;
+            case 'Add an employee':
+                addEmployee();
+                break;
+            case 'Update an employee role':
+                updateEmployee();
+                break;
+            case 'Update an employee manager':
+                updaeManager();
+                break;
+            case 'View employees by department':
+                viewEmpByDepartment();
+                break;
+            case 'Delete a department':
+                deleteDepartment();
+                break;
+            case 'Delete a role':
+                deleteRole();
+                break;
+            case 'Delete an employee':
+                deleteEmployee();
+                break;
+            case 'View department budgets':
+                viewbudgets();
+                break;
+            case 'Terminate program':
+                terminate();
+                break;       
         }
-
     });
-
 };
 
 
