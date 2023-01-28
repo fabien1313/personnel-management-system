@@ -94,6 +94,11 @@ const startPrompt = () => {
     });
 };
 
+const viewDepartments = async () => {
+    db_connection.query()
+
+}
+
 
 
 
