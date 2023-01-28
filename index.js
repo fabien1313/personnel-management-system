@@ -150,6 +150,35 @@ const addDepartment = async () => {
     }
 };
 
+const addRole = async () => {
+    try {
+        const result = await inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'rolesTitle',
+            message: 'What is the title of the new role?'
+        },
+        {
+            type: 'input',
+            name: 'rolesSalary',
+            message: 'What is the salary for the new role?'
+        },
+        {
+            type: 'input',
+            name: 'department_id',
+            message: 'What is the department id for the new role?'
+        }
+    ]);
+    const {rolesTitle, rolesSalary, department_id} = result;
+    const addNew = `INSERT INTO roles (title, salary, department_id) VALUES ('${rolesTitle}', '${rolesSalary}', '${department_id}')`;
+    await db_connection.promise().query(addNew); command(`The role ${rolesTitle} has been added successfully`);
+    startPrompt();
+    }
+    catch (err) {
+        command('There was an error with your request. Please notify your admin of Error: ', err);
+    }
+};
+
 
 
 
