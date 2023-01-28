@@ -95,9 +95,15 @@ const startPrompt = () => {
 };
 
 const viewDepartments = async () => {
-    db_connection.query()
-
-}
+    db_connection.query('SELECT * FROM department', (err, result) => {
+        if (result) {
+            console.table(result)
+            startPrompt();
+        } else if (err) {
+            console.log('There was an error with your request. Please notify your admin of Error: ', err);
+        }
+    });
+};
 
 
 
