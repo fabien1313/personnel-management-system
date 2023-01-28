@@ -70,7 +70,7 @@ const startPrompt = () => {
                 updateEmployee();
                 break;
             case 'Update an employee manager':
-                updaeManager();
+                updateManager();
                 break;
             case 'View employees by department':
                 viewEmpByDepartment();
@@ -113,6 +113,17 @@ const viewRoles = async () => {
         } else if (err) {
             console.log('There was an error with your request. Please notify your admin of Error: ', err);
         }
+    });
+};
+
+const viewEmployees = async () => {
+    db_connection.query('SELECT employee.id, employee.first_name, employee.last_name, roles.title, department.department_name AS department, roles.salary, employee.manager_id FROM employee JOIN roles ON employee.role_id = roles.id JOIN department ON roles.department_id = department.id', (err, result) => {
+        if (result) {
+            console.table(result)
+            startPrompt();
+        } else if (err) {
+            console.log('There was an error with your request. Please notify your admin of Error: ', err);
+        };
     });
 };
 
