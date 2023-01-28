@@ -4,6 +4,8 @@ const cTable = require('console.table');
 const dotenv = require('dotenv'); 
 require('dotenv').config();
 
+const command = console.log;
+
 
 
 
@@ -125,6 +127,27 @@ const viewEmployees = async () => {
             console.log('There was an error with your request. Please notify your admin of Error: ', err);
         };
     });
+};
+
+
+const addDepartment = async () => {
+    try {
+        const result = await inquirer.prompt ([
+            {
+                type: 'input',
+                name: 'department_name',
+                message: 'Enter the name of the department you would like to add.'
+            }
+        ]);
+        const {department_name} = result;
+        const addNew = `INSERT INTO department (department_name) VALUES ('${department_name}')`;
+        await db_connection.promise().query(addNew);
+        command(`Department ${department_name} has been added successfully`);
+        startPrompt();
+    }
+    catch (err) {
+        command('There was an error with your request. Please notify your admin of Error: ', err);
+    }
 };
 
 
