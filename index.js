@@ -38,7 +38,7 @@ const startPrompt = () => {
              'Add a department', 
              'Add a role', 
              'Add an employee', 
-             'update an employee role', 
+             'Update an employee role', 
              'Update an employee manager',
              'View employees by department',
              'Delete a department',
@@ -232,10 +232,44 @@ const addEmployee = async () => {
 
 const updateEmployee = async () => {
     try {
-        const [rows] = await db_connection.promise().query("SELECT id, CONCAT(first_name,' ', last_name) as name FROM employee");
+        const [rows] = await db_connection.promise().query("SELECT id, CONCAT(first_name, ' ', last_name) as name FROM employee");
+        const employees = rows.map(row => (
+            { 
+                name: row.name, 
+                value: row.id 
+            }
+        ));
+        const {updateEmployee} = await inquirer.prompt([
+            {
+                type: "list",
+                name: "updateEmployee",
+                message: "Choose the employee you would like to update",
+                choices: employees,
+            }
+        ]);
+        const [roles] = await db_connection.promise().query("SELECT id, title FROM roles");
+        const options = roles.map(role => (   
+            { 
+                name: role.title, 
+                value: role.id 
+            }
+        ));
+        const {role} = await inquirer.prompt([
+            {
+                type: "list",
+                name: "role",
+                message: "Choose the new role for the employee",
+                choices: options, 
+            }
+        ]);
+        const addNew = `UPDATE employee SET role_id = ${role} WHERE id = ${updateEmployee}`;
+        await db_connection.promise().query(addNew);
+        command("The employee you selected has been successfully updated!");
+        startPrompt();
+    } catch (err) {
+        command('There was an error with your request. Please notify your admin of Error: ', err);
     }
-
-}
+};
 
 
 
