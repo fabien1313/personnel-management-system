@@ -179,6 +179,63 @@ const addRole = async () => {
     }
 };
 
+const addEmployee = async () => {
+    try {
+        const [rows] = await db_connection.promise().query('SELECT id FROM roles');
+        const rolesId = rows.map(row => row.id);
+        const result = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'first_name',
+                message: 'What is the first name of the employee you would like to add?',
+                validate: function(value) {
+                    if (!value.match(/^[a-zA-Z]+$/)) {
+                        return 'First name should contain only letters.';
+                    }
+                    return true;
+                }
+            },
+            {
+                type: 'input',
+                name: 'last_name',
+                message: 'What is the last name of the employee you would like to add?',
+                validate: function(value) {
+                    if (!value.match(/^[a-zA-Z]+/)) {
+                        return 'Last name should contain only letters.'
+                    }
+                    return true;
+                }
+            },
+            {
+                type: 'list',
+                name: 'role_id',
+                message: 'What role ID would you like to assign new employee?',
+                choices: rolesId,
+            },
+            {
+                type: 'input',
+                name: 'manager_id',
+                message: 'What is the ID of the manager for the new employee?'
+            }
+        ]);
+        const {first_name, last_name, role_id, manager_id} = result;
+        const addNew = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('${first_name}', '${last_name}', '${role_id}', '${manager_id}')`;
+        await db_connection.promise().query(addNew);
+        command(`You have added employee ${first_name} ${last_name} successfully!`);
+        startPrompt();
+
+    }
+    catch (err) {
+        command('There was an error with your request. Please notify your admin of Error: ', err);
+    }
+};
+
+const updateEmployee = async () => {
+    try {
+        const [rows] = await db_connection.promise().query("SELECT id, CONCAT(first_name,' ', last_name) as name FROM employee");
+    }
+
+}
 
 
 
