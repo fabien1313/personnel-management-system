@@ -39,12 +39,6 @@ const startPrompt = () => {
              'Add a role', 
              'Add an employee', 
              'Update an employee role', 
-             'Update an employee manager',
-             'View employees by department',
-             'Delete a department',
-             'Delete a role',
-             'Delete an employee',
-             'View department budgets',
              'Terminate program'
             ]
         }
@@ -70,24 +64,6 @@ const startPrompt = () => {
                 break;
             case 'Update an employee role':
                 updateEmployee();
-                break;
-            case 'Update an employee manager':
-                updateManager();
-                break;
-            case 'View employees by department':
-                viewEmpByDepartment();
-                break;
-            case 'Delete a department':
-                deleteDepartment();
-                break;
-            case 'Delete a role':
-                deleteRole();
-                break;
-            case 'Delete an employee':
-                deleteEmployee();
-                break;
-            case 'View department budgets':
-                viewbudgets();
                 break;
             case 'Terminate program':
                 terminate();
@@ -269,6 +245,13 @@ const updateEmployee = async () => {
     } catch (err) {
         command('There was an error with your request. Please notify your admin of Error: ', err);
     }
+};
+
+const terminate = async () => {
+    if (db_connection) {
+        db_connection.end();
+    }
+    command('Goodbye!');
 };
 
 
