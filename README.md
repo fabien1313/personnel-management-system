@@ -55,7 +55,7 @@ THEN I am prompted to select an employee to update and their new role and this i
   <hr>
 
   ## Usage
-  Walkthrough Video:
+  Walkthrough Video: https://drive.google.com/file/d/1wnFY37uvSqAYk54bFIt9aX37iBMjFTc-/view 
 
     Initialize the program by entering (npm start) in the command line or terminal. Once you do that, you will be prompted with a menu which you can navigate with your arrows keys to view, add, update, and delete.
   <hr>
