@@ -3,9 +3,9 @@
   <hr>
 
   ## Description
-    This repository hosts a Employee Tracker program. Often, a developer must create an interface that allows non-developers the ability to interact and view data stored in a database.
+  This repository hosts a Employee Tracker program. Often, a developer must create an interface that allows non-developers the ability to interact and view data stored in a database.
 
-    Typically, these are referred to as content management system or (CMS). Using this program you can view all departments, all roles, all employees, add a department, add a role, add an employee, and update an employee role.
+  Typically, these are referred to as content management system or (CMS). Using this program you can view all departments, all roles, all employees, add a department, add a role, add an employee, and update an employee role.
 
 **User Story:**<br>
 AS A business owner <br>
@@ -44,20 +44,20 @@ THEN I am prompted to select an employee to update and their new role and this i
   <hr>
 
   ## Installation
-    You will need to start by having Node.js downloaded on your local machine.
+  You will need to start by having Node.js downloaded on your local machine.
 
-    THEN you run npm install for all of the packages listed below.
+  THEN you run npm install for all of the packages listed below.
 
-    - MySQL,
-    - Inquirer,
-    - Console.table,
-    - Dotenv
+  - MySQL,
+  - Inquirer,
+  - Console.table,
+  - Dotenv
   <hr>
 
   ## Usage
   Walkthrough Video: https://drive.google.com/file/d/1wnFY37uvSqAYk54bFIt9aX37iBMjFTc-/view 
 
-    Initialize the program by entering (npm start) in the command line or terminal. Once you do that, you will be prompted with a menu which you can navigate with your arrows keys to view, add, update, and delete.
+  Initialize the program by entering (npm start) in the command line or terminal. Once you do that, you will be prompted with a menu which you can navigate with your arrows keys to view, add, update, and delete.
   <hr>
 
   ## Technologies
